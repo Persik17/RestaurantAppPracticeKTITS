@@ -63,10 +63,13 @@ namespace Pract_pr_22.RolePages
                 Button button = sender as Button;
                 Booking booking = button.DataContext as Booking;
 
-                MainWindow.ent.Booking.Remove(booking);
-                MainWindow.ent.SaveChanges();
+                if (booking != null)
+                {
+                    MainWindow.ent.Booking.Remove(booking);
+                    MainWindow.ent.SaveChanges();
 
-                MyBookingList.ItemsSource = MainWindow.ent.Booking.Where(c => c.IDUser == localUser.ID).ToList();
+                    MyBookingList.ItemsSource = MainWindow.ent.Booking.Where(c => c.IDUser == localUser.ID).ToList();
+                }
             }
         }
     }

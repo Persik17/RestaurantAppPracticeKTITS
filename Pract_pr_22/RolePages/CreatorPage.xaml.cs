@@ -49,7 +49,13 @@ namespace Pract_pr_22.RolePages
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new AuthPage());
+            Button button = sender as Button;
+            Ownership own = button.DataContext as Ownership;
+
+            if (own != null)
+            {
+                NavigationService.Navigate(new AddEditRestPage(localUser, own));
+            }
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)

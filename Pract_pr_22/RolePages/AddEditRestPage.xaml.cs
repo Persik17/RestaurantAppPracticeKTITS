@@ -20,7 +20,7 @@ namespace Pract_pr_22.RolePages
     /// </summary>
     public partial class AddEditRestPage : Page
     {
-        public AddEditRestPage()
+        public AddEditRestPage(User user, Ownership own)
         {
             InitializeComponent();
         }
