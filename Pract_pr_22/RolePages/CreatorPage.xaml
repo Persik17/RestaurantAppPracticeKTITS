@@ -25,9 +25,9 @@
             </StackPanel>
         </StackPanel>
 
-        <Button Grid.Row="0" materialDesign:ShadowAssist.ShadowEdges="None" HorizontalAlignment="Right" x:Name="AddBtn" Click="AddBtn_Click" Margin="0,100,20,0" BorderBrush="#4BB9F8" Foreground="#4BB9F8" Width="120" Style="{StaticResource MaterialDesignPaperLightButton}" ToolTip="Resource name: MaterialDesignPaperLightButton" Content="ДОБАВИТЬ" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Cursor="Hand" />
+        <Button Visibility="Hidden" Grid.Row="0" materialDesign:ShadowAssist.ShadowEdges="None" HorizontalAlignment="Right" x:Name="AddBtn" Click="AddBtn_Click" Margin="0,100,20,0" BorderBrush="#4BB9F8" Foreground="#4BB9F8" Width="120" Style="{StaticResource MaterialDesignPaperLightButton}" ToolTip="Resource name: MaterialDesignPaperLightButton" Content="ДОБАВИТЬ" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Cursor="Hand" />
 
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" Visibility="Hidden" x:Name="GridSp">
             <DataGrid VerticalScrollBarVisibility="Visible" IsReadOnly="True" CanUserReorderColumns="False" CanUserSortColumns="False" CanUserResizeColumns="False" x:Name="MyRestGrid" CanUserAddRows="False" AutoGenerateColumns="False" HeadersVisibility="All">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn Width="250">
@@ -68,6 +68,13 @@
                     </DataGridTemplateColumn>
                 </DataGrid.Columns>
             </DataGrid>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" x:Name="WelcomeSp" Visibility="Hidden" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="/Images/sticker.png" Width="50" Height="50"/>
+            <TextBlock Text="ТУТ ПУСТО" HorizontalAlignment="Center"/>
+            <TextBlock Text="Нет ресторанов, которыми можно управлять" Foreground="Gray" HorizontalAlignment="Center"/>
+            <Button Grid.Row="0" Margin="5" materialDesign:ShadowAssist.ShadowEdges="None" HorizontalAlignment="Center" x:Name="FirstAddBtn" Click="AddBtn_Click" BorderBrush="#4BB9F8" Foreground="#4BB9F8" Width="120" Style="{StaticResource MaterialDesignPaperLightButton}" ToolTip="Resource name: MaterialDesignPaperLightButton" Content="ДОБАВИТЬ" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Cursor="Hand" />
         </StackPanel>
     </Grid>
 </Page>

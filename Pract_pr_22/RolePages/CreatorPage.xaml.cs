@@ -32,7 +32,19 @@ namespace Pract_pr_22.RolePages
 
             WelcomTb.Text += localUser.Name;
 
-            MyRestGrid.ItemsSource = MainWindow.ent.Ownership.Where(c => c.IDUser == localUser.ID).ToList();
+            List<Ownership> ownerships = MainWindow.ent.Ownership.Where(c => c.IDUser == localUser.ID).ToList();
+
+            if (ownerships.Count == 0)
+            {
+                WelcomeSp.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                GridSp.Visibility = Visibility.Visible;
+                AddBtn.Visibility = Visibility.Visible;
+
+                MyRestGrid.ItemsSource = ownerships;
+            }
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
@@ -44,7 +56,7 @@ namespace Pract_pr_22.RolePages
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new AddEditRestPage(localUser, new Ownership(), false));
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
@@ -54,7 +66,7 @@ namespace Pract_pr_22.RolePages
 
             if (own != null)
             {
-                NavigationService.Navigate(new AddEditRestPage(localUser, own));
+                NavigationService.Navigate(new AddEditRestPage(localUser, own, true));
             }
         }
 

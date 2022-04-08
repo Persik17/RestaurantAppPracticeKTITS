@@ -237,6 +237,7 @@
     <Resource Include="Images\RestImages\олег1.png" />
     <Resource Include="Images\RestImages\олег2.jpg" />
     <Resource Include="Images\RestImages\театр.jpg" />
+    <Resource Include="Images\sticker.png" />
     <Content Include="RestModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>RestModel.Context.cs</LastGenOutput>

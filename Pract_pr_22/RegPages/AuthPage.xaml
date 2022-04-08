@@ -21,7 +21,7 @@
             </PasswordBox>
         </StackPanel>
         <StackPanel>
-            <Button materialDesign:ShadowAssist.ShadowEdges="Bottom" Margin="10" x:Name="EnterBtn" Click="EnterBtn_Click" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="200" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="ВОЙТИ" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Background="#FF25841A"/>
+            <Button materialDesign:ShadowAssist.ShadowEdges="Bottom" Margin="10" BorderBrush="#FF25841A" x:Name="EnterBtn" Click="EnterBtn_Click" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="200" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" Content="ВОЙТИ" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Background="#FF25841A"/>
         </StackPanel>
     </StackPanel>
 </Page>

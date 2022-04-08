@@ -33,7 +33,11 @@
 
                             <materialDesign:Card Grid.Column="0" Grid.ColumnSpan="2" UniformCornerRadius="10" materialDesign:ShadowAssist.ShadowDepth="Depth3" materialDesign:ShadowAssist.ShadowEdges="All">
                                 <StackPanel>
-                                    <Image Width="240" Height="155" Source="{Binding Restourant.Image}" VerticalAlignment="Top"/>
+                                    <Border CornerRadius="10" VerticalAlignment="Top" Width="240" Height="155" HorizontalAlignment="Center">
+                                        <Border.Background>
+                                            <ImageBrush Stretch="Fill" ImageSource="{Binding Restourant.Image}"/>
+                                        </Border.Background>
+                                    </Border>
                                     <StackPanel Orientation="Horizontal">
                                         <StackPanel Width="150" Orientation="Vertical" HorizontalAlignment="Left"  Margin="10">
                                             <TextBlock Text="{Binding Restourant.Name}"/>

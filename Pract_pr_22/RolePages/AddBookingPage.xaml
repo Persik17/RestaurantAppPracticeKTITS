@@ -45,7 +45,7 @@
             </StackPanel>
         </StackPanel>
 
-        <Button x:Name="AcceptBtn" Click="AcceptBtn_Click" Foreground="#4BB9F8" Background="White" BorderBrush="White" Margin="0,0,100,0" Content="Продолжить" Grid.Column="1" Grid.Row="4" Width="300" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button x:Name="AcceptBtn" Click="AcceptBtn_Click" Foreground="#4BB9F8" Background="White" BorderBrush="White" Margin="0,0,100,0" Content="Продолжить" Grid.Column="1" Grid.Row="4" Width="300" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Cursor="Hand"/>
         <Label x:Name="DoneLbl" Content="{materialDesign:PackIcon Kind=Check, Size=100}" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,100,0" Foreground="White" Visibility="Hidden"/>
     </Grid>
 </Page>

@@ -9,7 +9,116 @@
       d:DesignHeight="550" d:DesignWidth="800"
       Title="AddEditRestPage">
 
-    <Grid>
-        
-    </Grid>
+    <ScrollViewer>
+        <Grid>
+            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.ColumnSpan="2">
+                <TextBlock Margin="10" Width="400" FontWeight="Bold" x:Name="WelcomTb" HorizontalAlignment="Left" Text="Заполните данные о ресторане" FontSize="40" TextWrapping="WrapWithOverflow"  Foreground="Black"/>
+                <TextBlock Margin="10" Text="Пользователи сделают выбор на основе этих данных" FontSize="20" Foreground="Gray"/>
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="Check1" VerticalAlignment="Center" Margin="10,0,0,0" Height="10" Width="10" BorderBrush="Gray" Background="Gray" Foreground="Gray" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Cursor="Hand"/>
+                        <TextBox Text="{Binding Restourant.Name}" x:Name="NameTb" materialDesign:HintAssist.Foreground="Gray" Foreground="Black" BorderBrush="Gray" Margin="10" Width="350" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" AcceptsReturn="True" materialDesign:HintAssist.Hint="Название ресторана" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" Cursor="Arrow" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="Check2" VerticalAlignment="Top" Margin="10,10,0,0" Height="10" Width="10" BorderBrush="Gray" Background="Gray" Foreground="Gray" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Cursor="Hand"/>
+                        <TextBox Text="{Binding Restourant.Description}" x:Name="DescTb" Margin="10" materialDesign:HintAssist.Foreground="Gray" Width="350" Foreground="Black" BorderBrush="Gray" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Height="100" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="Это описание увидят&#x0a;пользователи, расскажите о&#x0a;своем месте" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="Check3" VerticalAlignment="Center" Margin="10,0,0,0" Height="10" Width="10" BorderBrush="Gray" Background="Gray" Foreground="Gray" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Cursor="Hand"/>
+                        <TextBox Text="{Binding Restourant.Address}" x:Name="AddressTb" materialDesign:HintAssist.Foreground="Gray" Foreground="Black" BorderBrush="Gray" Margin="10" Width="350" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" AcceptsReturn="True" materialDesign:HintAssist.Hint="Адрес" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" Cursor="Arrow" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="Check4" VerticalAlignment="Center" Margin="10,0,0,0" Height="10" Width="10" BorderBrush="Gray" Background="Gray" Foreground="Gray" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Cursor="Hand"/>
+                        <TextBox Text="{Binding Restourant.PlaceCount}" x:Name="CountTb" materialDesign:HintAssist.Foreground="Gray" Foreground="Black" BorderBrush="Gray" Margin="10" Width="350" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" AcceptsReturn="True" materialDesign:HintAssist.Hint="Общее количество мест" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" Cursor="Arrow" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="Check5" VerticalAlignment="Center" Margin="10,0,0,0" Height="10" Width="10" BorderBrush="Gray" Background="Gray" Foreground="Gray" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Cursor="Hand"/>
+                        <TextBox Text="{Binding Restourant.Image}" x:Name="ImageTb" materialDesign:HintAssist.Foreground="Gray" Foreground="Black" BorderBrush="Gray" Margin="10" Width="350" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" AcceptsReturn="True" materialDesign:HintAssist.Hint="Изображение ресторана" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" Cursor="Arrow" />
+                        <Button x:Name="ImageBtn" Click="ImageBtn_Click" BorderBrush="#4BB9F8" Width="60" Height="60" Background="#4BB9F8">
+                            <materialDesign:PackIcon Kind="Image" Height="25" Width="25" VerticalAlignment="Center"/>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="Check6" VerticalAlignment="Center" Margin="10,0,0,0" Height="10" Width="10" BorderBrush="Gray" Background="Gray" Foreground="Gray" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Cursor="Hand"/>
+                        <TextBox Text="{Binding Restourant.ContactPhone}" x:Name="PhoneTb" materialDesign:HintAssist.Foreground="Gray" Foreground="Black" BorderBrush="Gray" Margin="10" Width="350" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" AcceptsReturn="True" materialDesign:HintAssist.Hint="Контактный номер" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" Cursor="Arrow" />
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="Check7" VerticalAlignment="Center" Margin="10,0,0,0" Height="10" Width="10" BorderBrush="Gray" Background="Gray" Foreground="Gray" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Cursor="Hand"/>
+                            <Label Margin="10" Content="Наличие террасы?" Foreground="Gray"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10">
+                            <RadioButton Checked="Rb_Checked" x:Name="YesRb" Content="Да" Background="#4BB9F8" BorderBrush="#4BB9F8" Margin="20,0,10,0"/>
+                            <RadioButton Checked="Rb_Checked" x:Name="NoRb" Content="Нет" Background="#4BB9F8" BorderBrush="#4BB9F8" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="Check8" VerticalAlignment="Center" Margin="10,0,0,0" Height="10" Width="10" BorderBrush="Gray" Background="Gray" Foreground="Gray" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Cursor="Hand"/>
+                            <Label Margin="10" Content="Режим работы" Foreground="Gray"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="20,10,10,10">
+                            <TextBox Margin="10" Text="{Binding Restourant.StartTime, StringFormat=hh\\:mm}" x:Name="StartTb" materialDesign:HintAssist.Foreground="Gray" Foreground="Black" BorderBrush="Gray" Width="100" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" AcceptsReturn="True" materialDesign:HintAssist.Hint="Открытие" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" Cursor="Arrow" />
+                            <Label Margin="10" Content="-" FontSize="25" VerticalAlignment="Center" Foreground="Gray"/>
+                            <TextBox Margin="10" Text="{Binding Restourant.EndTime, StringFormat=hh\\:mm}" x:Name="EndTb" materialDesign:HintAssist.Foreground="Gray" Foreground="Black" BorderBrush="Gray" Width="100" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" AcceptsReturn="True" materialDesign:HintAssist.Hint="Закрытие" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" Cursor="Arrow" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="0,10,0,10">
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="Check9" VerticalAlignment="Center" Margin="10,0,0,0" Height="10" Width="10" BorderBrush="Gray" Background="Gray" Foreground="Gray" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Cursor="Hand"/>
+                            <Border Width="350" Margin="10" Height="40" BorderBrush="Gray" BorderThickness="1" CornerRadius="3">
+                                <TextBlock Width="350" VerticalAlignment="Center">
+                                    <StackPanel Orientation="Horizontal" Width="350">
+                                        <TextBlock x:Name="KitchenTb" Foreground="Black" Width="300"/>
+                                        <Button x:Name="OpenListBtn" Style="{StaticResource MaterialDesignRaisedDarkButton}" materialDesign:ShadowAssist.ShadowEdges="None" BorderBrush="White" Click="OpenListBtn_Click" Content="&#9660;" Background="White" Foreground="#C4C4C4"/>
+                                    </StackPanel>
+                                </TextBlock>
+                            </Border>
+                        </StackPanel>
+                        <ListView Width="350" Visibility="Hidden" HorizontalAlignment="Left" Margin="30,10,10,10" Height="0" x:Name="KitchenList">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Width="300" Margin="0,5,5,0">
+                                        <TextBlock Text="{Binding Name}" x:Name="CurrentKitchenTb" Foreground="Black" Width="60" VerticalAlignment="Center"/>
+                                        <CheckBox Margin="220,0,0,0" Unchecked="CurrentKitchenCb_Unchecked" Checked="CurrentKitchenCb_Checked" HorizontalAlignment="Right" x:Name="CurrentKitchenCb" BorderBrush="#4BB9F8" Background="#4BB9F8" Width="40" Height="40" VerticalAlignment="Center"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="Check10" VerticalAlignment="Top" Margin="10,10,0,0" Height="10" Width="10" BorderBrush="Gray" Background="Gray" Foreground="Gray" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Cursor="Hand"/>
+                    <TextBox Text="{Binding Restourant.HotWords}" x:Name="HotWordsTb" Margin="10" materialDesign:HintAssist.Foreground="Gray" Width="350" Foreground="Black" BorderBrush="Gray" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Top" Height="100" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" materialDesign:HintAssist.Hint="Альтернативные названия&#x0a;ресторана, сокращения, названия&#x0a;блюд по которым вас смогут&#x0a;найти" IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" Cursor="Arrow" />
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="Check11" VerticalAlignment="Center" Height="10" Width="10" BorderBrush="#19A964" Background="#19A964" Foreground="#19A964" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" Cursor="Hand"/>
+                        <Label Margin="10" Content="Средний чек" Foreground="Gray"/>
+                    </StackPanel>
+                    <StackPanel Margin="20,0,0,0" Orientation="Horizontal">
+                        <Slider x:Name="AVGPriceSl" Width="350" Minimum="0" Maximum="10000" Foreground="#4BB9F8" HorizontalAlignment="Left"/>
+                        <Label x:Name="AVGPriceLbl" Content="{Binding ElementName=AVGPriceSl, Path=Value}" ContentStringFormat="{}{0:#}" Foreground="#4BB9F8"/>
+                        <Label Content="₽" Foreground="Black"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Margin="10" Height="150" HorizontalAlignment="Left">
+                    <Button materialDesign:ShadowAssist.ShadowEdges="Bottom" x:Name="SaveBtn" Foreground="White" BorderBrush="#4BB9F8" Margin="10" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="350" ToolTip="Resource name: MaterialDesignRaisedLightDarkButton" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Background="#4BB9F8" Click="SaveBtn_Click" Cursor="Hand"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" Margin="100,220,0,0" Orientation="Horizontal">
+                <Label Foreground="#4BB9F8" Content="&lt;" FontSize="60" FontWeight="Bold" Margin="0,0,0,10"/>
+                <Label Foreground="#4BB9F8" Content="Добавление" FontSize="30" FontWeight="Bold" VerticalAlignment="Center"/>
+            </StackPanel>
+            
+        </Grid>
+    </ScrollViewer>
 </Page>

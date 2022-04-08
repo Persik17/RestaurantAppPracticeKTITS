@@ -46,7 +46,7 @@ namespace Pract_pr_22.RolePages
             TimeTb.BorderBrush = Brushes.White;
             CountTb.BorderBrush = Brushes.White;
 
-            if (int.TryParse(CountTb.Text, out int count))
+            if (int.TryParse(CountTb.Text, out int count) && count > 0)
             {
                 int hours = 0;
                 int minutes = 0;
