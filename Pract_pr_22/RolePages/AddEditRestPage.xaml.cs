@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace Pract_pr_22.RolePages
 {
@@ -50,8 +52,6 @@ namespace Pract_pr_22.RolePages
             AVGPriceSl.Value = 5000;
 
             KitchenList.ItemsSource = MainWindow.ent.KitchenType.ToList();
-
-            SetChecks();
 
             if (localIsEdit)
             {
@@ -234,12 +234,22 @@ namespace Pract_pr_22.RolePages
                 }
 
                 MainWindow.ent.SaveChanges();
+                NavigationService.Navigate(new CreatorPage(localUser));
             }
         }
 
         private void ImageBtn_Click(object sender, RoutedEventArgs e)
         {
+            OpenFileDialog openFile = new OpenFileDialog()
+            {
+                Filter = "*.png|*.jpg"
+            };
 
+            if (openFile.ShowDialog().GetValueOrDefault())
+            {
+                localOwn.Restourant.Image = new BitmapImage(new Uri(openFile.FileName)).ToString();
+                ImageTb.Text = new BitmapImage(new Uri(openFile.FileName)).ToString();
+            }
         }
 
         private bool SetChecks()
@@ -283,6 +293,34 @@ namespace Pract_pr_22.RolePages
                 return false;
             }
 
+            int.TryParse(CountTb.Text, out int count);
+
+            if (!string.IsNullOrEmpty(CountTb.Text) && count > 0)
+            {
+                Check4.Background = ok;
+                Check4.BorderBrush = ok;
+            }
+            else
+            {
+                Check4.Background = notOk;
+                Check4.BorderBrush = notOk;
+
+                return false;
+            }
+
+            if (!string.IsNullOrEmpty(ImageTb.Text))
+            {
+                Check5.Background = ok;
+                Check5.BorderBrush = ok;
+            }
+            else
+            {
+                Check5.Background = notOk;
+                Check5.BorderBrush = notOk;
+
+                return false;
+            }
+
             if (!string.IsNullOrEmpty(PhoneTb.Text) && Regex.Match(PhoneTb.Text, @"^((\+7|7|8)+([0-9]){10})$").Success)
             {
                 Check6.Background = ok;
@@ -314,6 +352,19 @@ namespace Pract_pr_22.RolePages
                 return false;
             }
 
+            if (!string.IsNullOrEmpty(StartTb.Text) && !string.IsNullOrEmpty(EndTb.Text))
+            {
+                Check8.Background = ok;
+                Check8.BorderBrush = ok;
+            }
+            else
+            {
+                Check8.Background = notOk;
+                Check8.BorderBrush = notOk;
+
+                return false;
+            }
+
             if (!string.IsNullOrEmpty(HotWordsTb.Text))
             {
                 Check10.Background = ok;
@@ -326,47 +377,6 @@ namespace Pract_pr_22.RolePages
 
                 return false;
             }
-
-            int.TryParse(CountTb.Text, out int count);
-
-            if (!string.IsNullOrEmpty(CountTb.Text) && count > 0)
-            {
-                Check4.Background = ok;
-                Check4.BorderBrush = ok;
-            }
-            else
-            {
-                Check4.Background = notOk;
-                Check4.BorderBrush = notOk;
-
-                return false;
-            }
-
-            if (!string.IsNullOrEmpty(ImageTb.Text))
-            {
-                Check5.Background = ok;
-                Check5.BorderBrush = ok;
-            }
-            else
-            {
-                Check5.Background = notOk;
-                Check5.BorderBrush = notOk;
-
-                return false;
-            }
-
-            //if (MainWindow.ent.Restournat_Kitchen.Where(c => c.IDRest == localOwn.Restourant.ID).ToList().Count != 0)
-            //{
-            //    Check9.Background = ok;
-            //    Check9.BorderBrush = ok;
-            //}
-            //else
-            //{
-            //    Check9.Background = notOk;
-            //    Check9.BorderBrush = notOk;
-
-            //    return false;
-            //}
 
             return true;
         }
@@ -389,12 +399,51 @@ namespace Pract_pr_22.RolePages
 
         private void CurrentKitchenCb_Unchecked(object sender, RoutedEventArgs e)
         {
+            if (localOwn.Restourant.ID != 0)
+            {
+                CheckBox cb = sender as CheckBox;
 
+                if (cb.DataContext is KitchenType type)
+                {
+                    Restournat_Kitchen restournat_Kitchen = MainWindow.ent.Restournat_Kitchen.ToList().Find(c => c.IDKitchen == type.ID && c.IDRest == localOwn.Restourant.ID);
+
+                    if (restournat_Kitchen != null)
+                    {
+                        MainWindow.ent.Restournat_Kitchen.Remove(restournat_Kitchen);
+                        MainWindow.ent.SaveChanges();
+                    }
+                }
+            }
         }
 
         private void CurrentKitchenCb_Checked(object sender, RoutedEventArgs e)
         {
+            if (localOwn.Restourant.ID != 0)
+            {
+                CheckBox cb = sender as CheckBox;
 
+                if (cb.DataContext is KitchenType type)
+                {
+                    Restournat_Kitchen restournat_Kitchen = MainWindow.ent.Restournat_Kitchen.ToList().Find(c => c.IDKitchen == type.ID && c.IDRest == localOwn.Restourant.ID);
+
+                    if (restournat_Kitchen == null)
+                    {
+                        Restournat_Kitchen new_rest_Kitchen = new Restournat_Kitchen
+                        {
+                            IDKitchen = type.ID,
+                            IDRest = localOwn.Restourant.ID
+                        };
+
+                        MainWindow.ent.Restournat_Kitchen.Add(new_rest_Kitchen);
+                        MainWindow.ent.SaveChanges();
+                    }
+                }
+            }
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            SetChecks();
         }
     }
 }
